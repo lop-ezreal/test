@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/styles/bootstrap-3.1.1.min.css">
+<link rel="stylesheet" href="/styles/ng-pagination.min.css">
+<link rel="stylesheet" href="/styles/myDialogs.min.css">
+</head>
+<body ng-app="messageApp" ng-controller="messageCtrl">
+<div class="container">
+<h3>聊天记录</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>用户名</th>
+      <th>openid</th>
+      <th>消息</th>
+      <th>创建时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="message in messages">
+      <td>{{ message.userId }}</td>
+       <td>{{ message.openid }}</td>
+      <td>{{ message.content}}</td>
+       <td>{{ message.createTime | date:'yyyy-MM-dd mm:hh:ss'}}</td>
+    </tr>
+  </tbody>
+</table>
+	 <div class="pager">
+                <pager page-count="pageCount" current-page="currentPage" on-page-change="onPageChange()" first-text="首页" next-text="下一页" prev-text="上一页" last-text="尾页"></pager>
+            </div>
+<hr>
+
+</div>
+<script src="/scripts/libs/angular.min.js"></script>
+<script src="/scripts/libs/ng-pagination.min.js"></script>
+<script src="/scripts/libs/angular-myDialogs.min.js"></script>
+<script src="/scripts/controllers/MessageController.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+security:
+  user:
+    name: admin
+    password: admin
+  basic:
+    realm: Please provide your authentication details
+
+management:
+  #port: 8081
+  address: 127.0.0.1
+  context-path: /manage
+  security:
+    enabled: true
+    role: SUPERUSER
+  
+shell:
+  ssh:
+    enabled: true
+    port: 2222
+    auth: spring
+spring:
+    datasource:
+        name: ledo
+        url: jdbc:mysql://10.137.12.28:3306/im
+        username: root
+        password: root
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+im-redis:
+    hostname: 127.0.0.1
+    port: 6379
+logging:
+    file: logs/ledo_im.log
+server:
+  port: 8212

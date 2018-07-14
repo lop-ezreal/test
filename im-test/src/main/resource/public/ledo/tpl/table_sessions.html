@@ -1,0 +1,21 @@
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">聊天记录</h1>
+</div>
+<div class="wrapper-md" ng-controller="sessionCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      会话列表
+    </div>
+      <div class="panel-body b-b b-light" >
+      角色ID：<input type="text" class="form-control input-sm w-sm inline m-r"   ng-model="filterOptions.filterParam.roleId" />
+      微信昵称： <input  type="text" class="form-control input-sm w-sm inline m-r"   ng-model="filterOptions.filterParam.name" />
+       游戏：      <label class="btn btn-default" ng-model="filterOptions.filterParam.game" btn-radio="4" uncheckable>暗黑黎明</label>
+              <label class="btn btn-default" ng-model="filterOptions.filterParam.game" btn-radio="3" uncheckable>拳皇97 OL</label>
+              <label class="btn btn-default" ng-model="filterOptions.filterParam.game" btn-radio="5" uncheckable>魔力宝贝</label>
+    </div>
+    <div class="table-responsive">
+      <div ng-grid="gridOptions" style="min-height:420px" ></div>
+    </div>
+  </div>
+</div>  

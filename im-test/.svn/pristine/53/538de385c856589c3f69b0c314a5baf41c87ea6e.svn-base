@@ -1,0 +1,42 @@
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div ng-controller="ListCtrl">
+
+
+  <!-- list -->
+  <div style="margin:4px 19px 3px 3px; border-style:solid; border-width:2px; border-color:#23b7e5;height: 600px;overflow:scroll;border-radius:5px;"  data-ng-init="scrollPostion($event)"  uiScroll>
+  <div  ng-repeat="message in messages[fold] | filter:fold"  style="padding: 18px 15px 80px 15px" ><!--  style="padding: 10px 12px 12px 21px"-->
+  
+    <div class=""   ng-if="message.type==1"  style="width: 666px;float: right;background-color:#8AD5EC; border: 6px solid #ddd;border-radius:15px"  >
+      <a ui-sref="app.page.profile" class="avatar thumb pull-right m-r">
+        <img ng-src="img/b11.jpg">
+         <div  style="float: right"><h4>{{message.uname}}</h4></div>
+      </a>
+  
+      <div class="clear">
+        <div class="m-t-xs"  style="font-size: 20px; font-family: cursive;">{{message.content }}</div><!--| limitTo:200  -->
+      </div>      
+          <div class="pull-left text-sm text-muted">
+        <span class="hidden-xs">{{ message.createTime | date:'yyyy-MM-dd mm:hh:ss'}}</span>
+      </div>
+  </div>
+      <br/>
+    <div class=""   ng-if="message.type==0"  style="width: 666px;float: left;background-color:#C3E4DC; border: 6px solid #ddd;border-radius:15px;"  >
+      <a ui-sref="app.page.profile" class="avatar thumb pull-left m-r">
+        <img ng-src="img/b9.jpg">
+       <div  style="float: left;"><h4>{{message.nickname}}</h4></div>
+      </a>
+      <div class="clear">
+         <div class="text-ellipsis m-t-xs"  style="font-size: 20px; font-family: cursive;">{{message.content | limitTo:100}}</div>
+      </div>   
+        <div class="pull-right text-sm text-muted">
+        <span class="hidden-xs">{{ message.createTime | date:'yyyy-MM-dd mm:hh:ss' }}</span>
+      </div>
+  </div>
+  
+  
+  </div>
+  
+  </div>
+  
+  <!-- / list -->
+</div>

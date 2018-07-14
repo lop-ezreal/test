@@ -1,0 +1,36 @@
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+   <div ng-controller="MessageController"><div  ng-show = "showChat">
+<div class="hbox hbox-auto-xs hbox-auto-sm" >
+  <div class="col w-md bg-light dk b-r bg-auto">
+    <div class="wrapper hidden-sm hidden-xs" id="email-menu"  data-ng-init="connect()">
+
+      <div class="wrapper"   >聊天记录</div>
+      <ul class="nav nav-pills nav-stacked nav-sm">
+        <li ng-repeat="label in labels" ui-sref-active="active">
+          <a ui-sref="app.message.list({fold:label.openid})"    ng-click="loadMsg(label.openid,label.uid,label.id)">
+            <i class="fa fa-fw fa-circle text-muted" color="{{label.color}}" label-color ></i>
+            {{label.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div ui-view ></div>
+  </div>
+</div>
+
+  <div class="wrapper"   style="margin:0 9px 6px 226px ">
+          <div ui-jq="wysiwyg"  style="min-height:200px;">
+          <textarea ng-model="content" cols="145"  rows="9" class="form-control "></textarea>
+          </div>
+      <div class="form-group">
+        <div class="col-lg-8 col-lg-offset-2">
+          <button class="btn btn-info w-xs"  style="margin:2px 44px 10px 552px"  ng-click="send()">发   送</button>
+          <button class="btn btn-info w-xs"  style="margin:-48px 73px 27px 440px"  ng-click="close()">结束对话</button>
+        </div>
+      </div>
+        </div>
+        </div>
+</div>

@@ -1,0 +1,86 @@
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="hbox hbox-auto-xs hbox-auto-sm"  ng-controller="dialogueCtr">
+  <div class="col">
+    <div style="background:url(img/c4.jpg) center center; background-size:cover">
+      <div class="wrapper-lg bg-white-opacity">
+      </div>
+    </div>
+    <div class="padder">      
+      <div class="streamline b-l b-info m-l-lg m-b padder-v">
+        <!-- .comment-reply -->
+        <!-- / .comment-reply -->
+        
+        
+        <div ng-repeat="msg in messages">
+        <div  ng-if="msg.type==0">
+          <a class="pull-left thumb-sm avatar m-l-n-md">
+            <img src="img/b9.jpg" alt="...">
+          </a>          
+          <div class="m-l-lg panel b-a"   style="background: #C8F2EF">
+            <div class="panel-heading pos-rlt b-b b-light">
+              <span class="arrow left"></span>
+              <a href>{{msg.nickname}}</a>
+              <label class="label bg-light m-l-xs">VIP </label> 
+              <span class="text-muted m-l-sm pull-right">
+              {{msg.createTime}}
+              </span>
+            </div>
+            <div class="panel-body">
+              <blockquote>
+                <p>{{msg.content}}</p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <!--  service  customer msg  -->		
+        <div  ng-if="msg.type==1">
+			   <a class="pull-left thumb-sm avatar m-l-n-md">
+            <img src="img/b11.jpg" alt="...">
+          </a>          
+          <div class="m-l-lg panel b-a">
+            <div class="panel-heading pos-rlt b-b b-light">
+              <span class="arrow left"></span>
+              <a href>{{msg.uname}}</a>
+              <label class="label bg-light m-l-xs"> 客服</label> 
+              <span class="text-muted m-l-sm pull-right">
+                  {{msg.createTime}}
+              </span>
+            </div>
+            <div class="panel-body">
+              <blockquote>
+                <p>{{msg.content}}</p>
+              </blockquote>
+            </div>
+          </div>
+			
+
+        </div>
+        		
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--  img tpl-->
+<!--  
+          <a class="pull-left thumb-sm avatar m-l-n-md">
+            <img src="img/a6.jpg" class="img-circle" alt="...">
+          </a>
+          <div class="m-l-lg m-b-lg">
+            <div class="m-b-xs">
+              <a href class="h4">{{msg.uname}}</a>
+              <span class="text-muted m-l-sm pull-right">
+                3h ago
+              </span>
+            </div>
+            <div class="m-b">
+              <div class="m-b">{{msg.content}}</div>
+              <img src="img/c5.jpg" class="b b-a wrapper-xs bg-white img-responsive">
+            </div>
+          </div>
+
+
+-->

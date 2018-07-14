@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/styles/bootstrap-3.1.1.min.css">
+<link rel="stylesheet" href="/styles/ng-pagination.min.css">
+<link rel="stylesheet" href="/styles/myDialogs.min.css">
+</head>
+<body ng-app="userApp" ng-controller="userCtrl">
+<div class="container">
+<h3>用户管理</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>编辑</th>
+      <th>用户名</th>
+      <th>角色</th>
+      <th>邮箱</th>
+      <th>电话</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users">
+      <td>
+        <button class="btn" ng-click="editUser(user.id)">
+          <span class="glyphicon glyphicon-pencil"></span>编辑
+        </button>
+      </td>
+      <td>{{ user.uname }}</td>
+      <td>{{ user.role}}</td>
+       <td>{{ user.email }}</td>
+       <td>{{ user.phoneNo }}</td>
+        
+    </tr>
+  </tbody>
+</table>
+	 <div class="pager">
+                <pager page-count="pageCount" current-page="currentPage" on-page-change="onPageChange()" first-text="首页" next-text="下一页" prev-text="上一页" last-text="尾页"></pager>
+            </div>
+<hr>
+<button class="btn btn-success" ng-click="editUser('new')">
+<span class="glyphicon glyphicon-user"></span>创建用户
+</button>
+<hr>
+
+<div ng-hide="add_ed"> 
+<h3 ng-hide="add">添加用户:</h3>
+<h3 ng-hide="edit">编辑用户:</h3>
+
+<form class="form-horizontal"  ng-submit="saveUser(user)">
+   <div class="form-group">
+    <div class="col-sm-10">
+    <input type="hidden" ng-model="user.id"  ng-init="user.id=-1" ng-disabled="!edit" >
+    </div>
+  </div> 
+ 
+  <div class="form-group">
+    <label class="col-sm-2 control-label">用户名:</label>
+    <div class="col-sm-10">
+    <input type="text" ng-model="user.uname" ng-disabled="!edit" placeholder="用户名"   required="required">
+    <span style="color:red" ng-show="userApp.user.$dirty && userApp.user.$invalid"></span>
+    </div>
+  </div> 
+  <div class="form-group">
+    <label class="col-sm-2 control-label">角 色:</label>
+    <div class="col-sm-10">
+    <select ng-model="user.role" required="required" >
+	<option ng-repeat="x in roles" value="{{x.key}}"  ng-selected="x.key=1" >{{x.value}}</option>
+	</select>
+    <span style="color:red" ng-show="userApp.user.$dirty && userApp.user.$invalid"></span>	
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">邮 箱:</label>
+    <div class="col-sm-10">
+    <input type="email" ng-model="user.email" placeholder="邮 箱" required="required">
+    <span style="color:red" ng-show="userApp.email.$dirty && userApp.email.$invalid"></span>	
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">电 话:</label>
+    <div class="col-sm-10">
+    <input type="text" ng-model="user.phoneNo" placeholder="电 话">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">密 码:</label>
+    <div class="col-sm-10">
+    <input type="password" ng-model="user.password" placeholder="密码" required="required">
+    <span style="color:red" ng-show="userApp.user.$dirty && userApp.user.$invalid"></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-10">
+        <input type="submit"  value="保存" class="btn btn-success"   >
+        <!--  
+        ng-disabled="userApp.user.$dirty && userApp.user.$invalid ||  userApp.email.$dirty && userApp.email.$invalid"
+        -->
+    </div>
+  </div>
+
+
+<!--   <div class="form-group">
+    <label class="col-sm-2 control-label">重复密码:</label>
+    <div class="col-sm-10">
+    <input type="password" ng-model="passw2" placeholder="重复密码">
+    </div>
+  </div> -->
+</form>
+</div>
+<hr>
+<button class="btn btn-success" ng-disabled="error || incomplete">
+<span class="glyphicon glyphicon-save"></span>修改
+</button>
+
+</div>
+<script src="/scripts/libs/angular.min.js"></script>
+<script src="/scripts/libs/ng-pagination.min.js"></script>
+<script src="/scripts/libs/angular-myDialogs.min.js"></script>
+<script src="/scripts/controllers/UserController.js"></script>
+
+</body>
+</html>
